@@ -6,7 +6,7 @@
 #    By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/02 23:21:39 by cgrasser          #+#    #+#              #
-#    Updated: 2024/12/02 23:38:00 by cgrasser         ###   ########.fr        #
+#    Updated: 2024/12/03 16:13:42 by cgrasser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,13 +33,13 @@ LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	@$(CC) $(CFLAGS) -I$(LIBFT_PATH)/include -c $< -o $@
+	@$(CC) -I$(LIBFT_PATH)/include -c $< -o $@
 
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ_DIR) $(OBJS)
 	@$(CC) $(OBJS) $(LIBFT) -o $(NAME)
-	@echo "$(YELLOW) ➥ $(RESET)$(BOLD) push_swap $(GREEN)✔$(RESET)"
+	@echo "$(YELLOW) ➥ $(RESET)$(BOLD) pipex $(GREEN)✔$(RESET)"
 
 $(LIBFT):
 	@make -s -C $(LIBFT_PATH)
