@@ -6,21 +6,21 @@
 #    By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/02 23:21:39 by cgrasser          #+#    #+#              #
-#    Updated: 2024/12/03 16:13:42 by cgrasser         ###   ########.fr        #
+#    Updated: 2024/12/11 09:30:58 by cgrasser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g 
 RM = rm -rf
 
 SRC_DIR = src/
 INC_DIR = include/
 OBJ_DIR = build/
 
-SRC = main.c
+SRC = pipex.c utils.c
 
 BOLD = \033[1m
 GREEN = \033[32m
@@ -33,12 +33,14 @@ LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	@$(CC) -I$(LIBFT_PATH)/include -c $< -o $@
+	@$(CC) $(CFLAGS) -I$(LIBFT_PATH)/include -I ./include -c $< -o $@
+
+bonus: all
 
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ_DIR) $(OBJS)
-	@$(CC) $(OBJS) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 	@echo "$(YELLOW) ➥ $(RESET)$(BOLD) pipex $(GREEN)✔$(RESET)"
 
 $(LIBFT):
@@ -49,7 +51,7 @@ $(OBJ_DIR):
 
 clean:
 	@make -s -C $(LIBFT_PATH) clean
-	@echo "$(YELLOW) ➥ $(BOLD)Cleaned all object files ! $(GREEN)✔$(RESET)\n"
+	@echo "$(YELLOW) ➥ $(RESET)$(BOLD)Cleaned all object files ! $(GREEN)✔$(RESET)"
 	@$(RM) $(OBJ_DIR)
 
 fclean:
