@@ -6,7 +6,7 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 15:44:52 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/11 10:25:23 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/13 14:17:39 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,17 +84,18 @@ int	main(int argc, char **argv, char **envp)
 
 	if (argc < 5)
 		usage();
-	if (ft_strncmp(argv[1], "here_doc", 8) == 0)
+	if (ft_strncmp(argv[1], "here_doc", 8) == 0
+		&& argv[1][8] == 0)
 	{
 		i = 3;
-		fileout = open(argv[argc - 1], O_WRONLY | O_CREAT | O_APPEND, 0777);
+		fileout = open_file(argv[argc - 1], 0);
 		here_doc(argv[2], argc);
 	}
 	else
 	{
 		i = 2;
-		fileout = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0777);
-		filein = open(argv[1], O_RDONLY, 0777);
+		fileout = open_file(argv[argc - 1], 1);
+		filein = open_file(argv[1], 2);
 		dup2(filein, STDIN_FILENO);
 	}
 	while (i < argc - 2)

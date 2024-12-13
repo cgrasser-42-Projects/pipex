@@ -6,7 +6,7 @@
 #    By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/02 23:21:39 by cgrasser          #+#    #+#              #
-#    Updated: 2024/12/11 09:30:58 by cgrasser         ###   ########.fr        #
+#    Updated: 2024/12/13 14:20:11 by cgrasser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ fclean:
 	@$(RM) $(OBJ_DIR)
 	@echo "$(YELLOW) ➥ $(RESET)$(BOLD)Cleaned all object files ! $(GREEN)✔$(RESET)"
 	@$(RM) $(NAME)
-	@echo "$(YELLOW) ➥ $(RESET)$(BOLD)Cleaned push_swap ! $(GREEN)✔$(RESET)"
+	@echo "$(YELLOW) ➥ $(RESET)$(BOLD)Cleaned $(NAME) ! $(GREEN)✔$(RESET)"
 
 re: fclean all
 

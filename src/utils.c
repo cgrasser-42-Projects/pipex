@@ -6,7 +6,7 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 09:10:43 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/11 10:19:16 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/13 14:02:30 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,22 @@ void	usage(void)
 	ft_printf("Error :\nUsage : %s\n", USAGE);
 	ft_printf("%59s\n", USAGE_HERE_DOC);
 	exit(EXIT_FAILURE);
+}
+
+int	open_file(char *file, int opt)
+{
+	int	fd;
+
+	fd = 0;
+	if (opt == 0)
+		fd = open(file, O_WRONLY | O_CREAT | O_APPEND, 0777);
+	else if (opt == 1)
+		fd = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	else if (opt == 2)
+		fd = open(file, O_RDONLY, 0777);
+	if (fd == -1)
+		exit_error("Error : Cannot open the file");
+	return (fd);
 }
 
 char	*find_path(char *cmd, char **envp)
